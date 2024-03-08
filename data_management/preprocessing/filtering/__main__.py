@@ -81,7 +81,7 @@ def main():
     parser.add_argument('--input_dir', type=str,
                         help='The input directory containing documents to process', required=True)
     parser.add_argument('--output_dir', type=str,
-                        help='The input file containing documents to process', required=False, default="./output")
+                        help='The input file containing documents to process', required=False, default="./tmp/output")
     args = parser.parse_args()
 
     start = datetime.now()

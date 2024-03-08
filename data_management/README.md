@@ -26,6 +26,7 @@ preprocessingディレクトリにいることを確認した上でセットア�
 $ pwd
 // ~/ucllm_redo_dev/preprocessing
 $ sudo apt-get install git-lfs
+$ sudo apt-get install wget
 $ ./bin/setup
 ```
 
@@ -50,7 +51,34 @@ $ ./bin/download_mc4_ja
 $ python -m preprocessing.download_dataset --dataset=wikipedia --split=20240301
 ```
 
+splitに指定可能な値は[wikipedia dumpのindex](https://dumps.wikimedia.org/jawiki/)に指定されているディレクトリ
+
+
+### [Redpajama]()
+
+全件ダウンロード(※注 巨大なデータセットです。ダウンロード先、実行時間にご注意ください)
+
+```sh
+$ python -m preprocessing.download_dataset --dataset=redpajama
+```
+
+データセット別のダウンロード
+
+```sh
+$ python -m preprocessing.download_dataset --dataset=redpajama --split=c4
+```
+
+splitに指定可能なデータセットは以下
+- arxiv
+- book
+- c4
+- common_crawl
+- github
+- stackexchange
+- wikipedia
+
 ## 2. Data processing
+
 
 ### Filtering
 
@@ -88,6 +116,23 @@ cleaner = Compose([
     document_filters.JSONDumper(),
 ])
 ```
+
+## 3. Post Training
+
+### [databricks dolly Japanese](https://huggingface.co/datasets/taka-yayoi/databricks-dolly-15k-ja)
+
+利用方法
+
+```sh
+$ python -m posttraining.download_dataset --output_base=output
+```
+
+https://huggingface.co/datasets/taka-yayoi/databricks-dolly-15k-ja にアップロードされているJSONL形式のデータセットです
+Dollyのトレーニングで利用可能な形式になっているので学習に応じて必要な形に整形して利用してください
+
+#### 参考
+
+https://www.databricks.com/jp/blog/2023/04/12/dolly-first-open-commercially-viable-instruction-tuned-llm
 
 ## 開発TIPS
 

@@ -1,7 +1,5 @@
-input/*
-!input/.keep
-output/*
-!output/.keep
+tmp/*
+!tmp/.keep
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
