@@ -1,9 +1,6 @@
 name: Python ruff lint
 
 on:
-  pull_request:
-    branches:
-      - linearized
   pull_request_target:
     branches:
       - linearized
